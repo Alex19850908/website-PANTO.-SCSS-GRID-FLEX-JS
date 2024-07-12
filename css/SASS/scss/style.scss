@@ -1,0 +1,90 @@
+$bgcolor: #fcc;
+$color: #ccc;
+$blockWidth: 75%;
+$border: 4px solid red;
+$mainFontSize: 1.1 em;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@mixin link ($link, $hover, $active, $visited) {
+    a {
+        color: $link;
+
+        &:hover {
+            color: $hover;
+        }
+
+        &:active {
+            color: $active;
+        }
+
+        &:visited {
+            color: $visited;
+        }
+    }    
+}
+
+@include link(#000, red, yellow, green);
+
+@mixin font ($fontW: bold, $color: red) {
+    font-size: $mainFontSize;
+    font-weight: $fontW;
+    font-family: Arial, sans-serif;
+    color: $color;
+}
+
+@mixin padd($color, $padd...) {
+    padding: $padd;
+}
+
+.block:not(.first) {
+    @include padd(blue,20px 40px 50px 34px);
+    background: $bgcolor;
+    height: 200px;
+    max-width: $blockWidth;
+    margin-bottom: 20px;
+    border: $border;
+}
+
+#central_block {
+    padding: 30px;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+    }
+
+    li {
+        float: left;
+        margin-right: 10px;
+
+        a {
+            @include font ($color: blue, $fontW: bold);
+            // color: blue;
+
+            &:hover {
+                color: red;
+            }
+        }
+    }
+
+    a {
+        @include font;
+        // color: $color;
+    }
+}
+
+//#central_block > ul {
+//    list-style: none;
+//}
+
+.first {
+    background: $bgcolor;
+    height: 100px;
+    margin-bottom: 20px;
+    border: $border;
+}

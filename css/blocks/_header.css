@@ -1,0 +1,5 @@
+.header {
+  background-color: var(--footer-bg);
+  -o-border-image: url("img/header/header-bg.jpg");
+     border-image: url("img/header/header-bg.jpg");
+}
